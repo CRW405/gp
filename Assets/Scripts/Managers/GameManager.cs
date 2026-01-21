@@ -1,10 +1,10 @@
 using UnityEngine;
 
-publi class GameManager : Singleton<GameManager> {
+public class GameManager : Singleton<GameManager> {
   private bool _isGameActive;
   private float _gameTime; 
 
-  public ovveride void Awake() {
+  public override void Awake() {
     base.Awake(); // must call base Awake logic due to virtual
   }
 
@@ -24,7 +24,7 @@ publi class GameManager : Singleton<GameManager> {
   }
 
   public void PauseGame() {
-    Debg.Log("[GameManager] Game Pause");
+    Debug.Log("[GameManager] Game Pause");
     _isGameActive = false;
     Time.timeScale = 0f;
   }

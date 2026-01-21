@@ -14,8 +14,8 @@ public class Singleton<T> : MonoBehaviour where T : Component {
         // if we cant find it, create it
         if (_instance == null) {
           GameObject obj = new GameObject();
-          obj.name = typeof(T).name;
-          _instance = obj.AddComponenet<T>();
+          obj.name = typeof(T).Name;
+          _instance = obj.AddComponent<T>();
         }
       }
       // finally, get
@@ -29,14 +29,51 @@ public class Singleton<T> : MonoBehaviour where T : Component {
   public virtual void Awake() {
     if (_instance == null) {
       //ensure instance persists across scenes
-      _instance this as DontDestroyOnLoad(GameObject);
-      
+      _instance = this as T;
+      DontDestroyOnLoad(gameObject);
     } else {
-      {
-        // if there is an object already there due to an error,
-        // destroy it to prevent duplication
-        Destroy(GameObject);
-      }
+      // if there is an object already there due to an error,
+      // destroy it to prevent duplication
+      Destroy(gameObject);
     }
   }
 }
+
+/*
+ *
+
+                    using UnityEngine;
+
+                    public class Singleton<T> : MonoBehaviour where T : Component
+                    {
+                        private static T _instance;
+
+                        public static T Instance
+                        {
+                            get
+                            {
+                                if (_instance == null)
+                                {
+                                    _instance = FindObjectOfType<T>();
+                                    if (_instance == null)
+                                    {
+                                        GameObject obj = new GameObject();
+                                        obj.name = typeof(T).Name;
+                                        _instance = obj.AddComponent<T>();
+                                    }
+                                }
+                                return _instance;
+                            }
+                        }
+
+                        public virtual void Awake()
+                        {
+                            if (_instance == null)
+                            {
+                                _instance = this as T;
+                                DontDestroyOnLoad(gameObject);
+                            }
+                            else { Destroy(gameObject); }
+                        }
+                    }
+                */
