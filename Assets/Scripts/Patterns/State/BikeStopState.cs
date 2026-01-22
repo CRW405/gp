@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class BikeStopState : MonoBehviour, IBikeState {
+public class BikeStopState : MonoBehaviour, IBikeState {
   private BikeController _bikeController;
 
   public void Handle(BikeController bikeController){
-    if (!_bikeController) {
+    if (!_bikeController) 
       _bikeController = bikeController;
+
       _bikeController.CurrentSpeed = 0;
-      Debug.Log("[BikeStopState] Stopped")
-    }
+      Debug.Log("[BikeStopState] Stopped");
   }
 }

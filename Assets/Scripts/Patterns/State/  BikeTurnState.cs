@@ -1,4 +1,4 @@
-using UnityState;
+using UnityEngine;
 
 public class BikeTurnState : MonoBehaviour, IBikeState {
   private Vector3 _turnDirection;
@@ -10,7 +10,7 @@ public class BikeTurnState : MonoBehaviour, IBikeState {
     _turnDirection.x = (float) _bikeController.CurrentTurnDirection;
 
     if (_bikeController.CurrentSpeed > 0) {
-      transform.Translate(_turnDirection * _bikeController._turnDistance);
+      transform.Translate(_turnDirection * _bikeController.turnDistance);
     }
 
   }

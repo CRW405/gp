@@ -1,4 +1,4 @@
-public interface IBikestate
+public interface IBikeState
 {
     void Handle(BikeController controller);
 }
